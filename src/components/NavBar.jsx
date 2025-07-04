@@ -6,7 +6,7 @@ export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" href="#">
+        <NavLink to="/" className="navbar-brand">
           Carrito
         </NavLink>
         <button
@@ -23,10 +23,12 @@ export const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active">Compras</NavLink>
+              <NavLink to="/" className="nav-link active">
+                Compras
+              </NavLink>
             </li>
           </ul>
-          <NavLink>
+          <NavLink to="/carrito">
             <Badge badgeContent={4} color="secondary">
               <ShoppingCart color="action" />
             </Badge>
