@@ -7,7 +7,7 @@ export const useProducts = () => {
     try {
       const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
-      console.log(data);
+      console.log(data); // ELIMINAR ESTO ANTES DE TERMINAR
       setProducts(data);
     } catch (error) {
       console.error("Se produjo el error: " + error);
