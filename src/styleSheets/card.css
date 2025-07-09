@@ -1,10 +1,17 @@
 /* Estilos para la card */
+.list-container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .card {
   display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
+  max-height: 500px;
 }
 
 .card-img {
@@ -46,7 +53,7 @@
   background-color: #45a049;
 }
 
-.boton-quitar {
+.btn-quit {
   background-color: #af4c4c;
   color: white;
   border: none;
@@ -55,7 +62,7 @@
   cursor: pointer;
 }
 
-.boton-quitar:hover {
+.btn-quit:hover {
   background-color: #a04545;
 }
 

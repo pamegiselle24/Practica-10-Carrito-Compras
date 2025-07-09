@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
-import "../styleSheets/styleSheet.css";
+import { ListProduct } from "../components/ListProduct";
 
 export const ComprasPage = () => {
   const { products, productsFetch } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
+  const [addedProducts, setAddedProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,35 +16,33 @@ export const ComprasPage = () => {
     fetchData();
   }, []);
 
+  const addProduct = (product) => {
+    setAddedProducts((prev) => [...prev, product]);
+  };
+
+  const removeProduct = (product) => {
+    setAddedProducts((prev) => [
+      ...prev.filter((item) => item.id === product.id),
+    ]);
+  };
+
   return (
     <>
       <h1>Compras:</h1>
       <hr />
-      <div className="container-products">
-        {isLoading ? (
-          <div className="spinner-container">
-            <div className="spinner"></div>
-          </div>
-        ) : (
-          products.map((product) => (
-            <div key={product.id} className="card" style={{ width: "18rem" }}>
-              <img src={product.image} className="card-img" alt={product.title} />
-              <div className="card-body">
-                <h5 className="card-title">{product.title}</h5>
-                <p className="card-text">{product.description}</p>
-                <p className="card-price">{product.price}</p>
-                <a href="#" className="btn-add">
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
+      {isLoading ? (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <ListProduct
+          products={products}
+          cartActions={{ addProduct, removeProduct }}
+          addedProducts={addedProducts}
+        />
+      )}
     </>
   );
 };
-// TO
 
-// HACER EL COMPONENTE CARD Y LA HOJA DE ESTILOS SEPARADA.
 // PREGUNTAR LO DEL BOTON AGREGAR Y QUITAR.
