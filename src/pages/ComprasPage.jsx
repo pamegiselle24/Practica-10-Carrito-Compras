@@ -21,9 +21,7 @@ export const ComprasPage = () => {
   };
 
   const removeProduct = (product) => {
-    setAddedProducts((prev) => [
-      ...prev.filter((item) => item.id === product.id),
-    ]);
+    setAddedProducts((prev) => prev.filter((item) => item.id !== product.id));
   };
 
   return (
