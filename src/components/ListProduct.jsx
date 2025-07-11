@@ -8,7 +8,8 @@ export const ListProduct = ({ products, cartActions, addedProducts }) => {
       <div className="list-container-card">
         {products.map((product) => {
           const isAdded = addedProducts.some((item) => item.id === product.id);
-          console.log(isAdded);
+          const handleClick = isAdded ? removeProduct : addProduct;
+          const buttonText = isAdded ? "Eliminar" : "Agregar";
           return (
             <div key={product.id} className="card" style={{ width: "18rem" }}>
               <img
@@ -19,15 +20,14 @@ export const ListProduct = ({ products, cartActions, addedProducts }) => {
               <div className="card-body">
                 <h5 className="card-title">{product.title}</h5>
                 <p className="card-text">{product.description}</p>
-                <p className="card-price">{product.price}</p>
+                <p className="card-price">$ {product.price}</p>
               </div>
               <button
                 type="button"
-                onClick={() =>
-                  isAdded ? removeProduct(product) : addProduct(product)
-                }
+                className={isAdded ? "btn btn-quit" : "btn btn-add"}
+                onClick={() => handleClick(product)}
               >
-                {isAdded ? "Eliminar" : "Agregar"}
+                {buttonText}
               </button>
             </div>
           );

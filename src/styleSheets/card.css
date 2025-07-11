@@ -7,46 +7,53 @@
 
 .card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
-  max-height: 500px;
 }
 
 .card-img {
   width: 100px;
-  height: 100px;
   object-fit: cover;
   border-radius: 4px;
-  margin-right: 10px;
 }
 
 .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
+  margin-top: 20px;
 }
-
+/*
 .card-title {
   margin: 0;
 }
-
+*/
 .card-text {
   margin: 0;
   margin-bottom: 10px;
 }
 
 .card-price {
-  margin: 0;
+  margin-top: auto;
   font-weight: bold;
 }
 
-.btn-add {
-  background-color: #4caf50;
+.btn {
+  width: 100%;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.btn-add {
+  background-color: #4caf50;
 }
 
 .btn-add:hover {
@@ -55,11 +62,6 @@
 
 .btn-quit {
   background-color: #af4c4c;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .btn-quit:hover {
