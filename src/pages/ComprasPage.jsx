@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
-import { useProducts } from "../hooks/useProducts";
+import { useContext } from "react";
 import { ListProduct } from "../components/ListProduct";
+import { ProductosContext } from "../context/ProductosContext";
 
 export const ComprasPage = () => {
-  const { products, productsFetch } = useProducts();
-  const [isLoading, setIsLoading] = useState(false);
-  const [addedProducts, setAddedProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      await productsFetch();
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
-
-  const addProduct = (product) => {
-    setAddedProducts((prev) => [...prev, product]);
-  };
-
-  const removeProduct = (product) => {
-    setAddedProducts((prev) => prev.filter((item) => item.id !== product.id));
-  };
+  const { isLoading } = useContext(ProductosContext);
 
   return (
     <>
@@ -33,14 +14,8 @@ export const ComprasPage = () => {
           <div className="spinner"></div>
         </div>
       ) : (
-        <ListProduct
-          products={products}
-          cartActions={{ addProduct, removeProduct }}
-          addedProducts={addedProducts}
-        />
+        <ListProduct />
       )}
     </>
   );
 };
-
-// PREGUNTAR LO DEL BOTON AGREGAR Y QUITAR.

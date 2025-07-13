@@ -1,8 +1,12 @@
 import "../styleSheets/card.css";
+import { ProductosContext } from "../context/ProductosContext";
+import { useContext } from "react";
+import { CarritoContext } from "../context/CarritoContext";
 
-export const ListProduct = ({ products, cartActions, addedProducts }) => {
+export const ListProduct = () => {
+  const { products } = useContext(ProductosContext);
+  const { addedProducts, cartActions } = useContext(CarritoContext);
   const { addProduct, removeProduct } = cartActions;
-  console.log(addedProducts);
   return (
     <>
       <div className="list-container-card">
